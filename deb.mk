@@ -23,16 +23,17 @@ DEB_BUILD_bionic := libc libm libdl
 DEB_STATIC_MODULE_bionic := libc_ndk
 
 # bionic-dev 只放 libc 自己的头（stdio.h/sys/... 与 machine/）
-DEB_INCDIRCONTENTS_bionic := \
+# 架构相关目录由 build/make/tools/deb/deb.mk 按 TARGET_ARCH 映射
+DEB_INCDIRCONTENTS_bionic = \
     libc/include \
-    libc/arch-arm/include
+    libc/$(DEB_BIONIC_ARCH)/include
 DEB_DEV_DEPENDS_bionic := linux-headers (= $(DEB_VERSION_linux-headers))
 
 # linux-headers：内核 uapi（linux/、asm-generic/、asm/，以及 compiler.h）
-DEB_INCDIRS_linux-headers := \
+DEB_INCDIRS_linux-headers = \
     libc/kernel/uapi/linux \
     libc/kernel/uapi/asm-generic \
-    libc/kernel/uapi/asm-arm/asm
+    libc/kernel/uapi/$(DEB_KERNEL_ARCH)/asm
 DEB_INCDIRCONTENTS_linux-headers := libc/kernel/android/uapi
 
 DEB_DESC_bionic := Android C library (bionic: libc, libm, libdl)
