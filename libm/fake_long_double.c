@@ -24,9 +24,11 @@
 // that call the regular "double" function.
 
 long double copysignl(long double a1, long double a2) { return copysign(a1, a2); }
+long double floorl(long double a1) { return floor(a1); }
 long double fmaxl(long double a1, long double a2) { return fmax(a1, a2); }
 long double fmodl(long double a1, long double a2) { return fmod(a1, a2); }
 long double fminl(long double a1, long double a2) { return fmin(a1, a2); }
+long double sqrtl(long double a1) { return sqrt(a1); }
 int ilogbl(long double a1) { return ilogb(a1); }
 long long llrintl(long double a1) { return llrint(a1); }
 #if !defined(__i386__) // x86 has an assembler lrint/lrintl.
